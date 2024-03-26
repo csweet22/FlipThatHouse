@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv2wxka46gmv7"]
+
+[ext_resource type="Script" path="res://FlippableObject.gd" id="1_wfxro"]
+[ext_resource type="Texture2D" uid="uid://ctmqe7k1kfh51" path="res://icon.svg" id="2_5p1yd"]
+
+[node name="FlippableObject" type="Node2D" groups=["flip_object"]]
+script = ExtResource("1_wfxro")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_5p1yd")
+
+[node name="FlipButton" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0.5, 0.5)
+
+[connection signal="pressed" from="FlipButton" to="." method="_on_flip_button_pressed"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnbvf0raqgsnr"]
+
+[ext_resource type="Script" path="res://House.gd" id="1_rhbrw"]
+[ext_resource type="PackedScene" uid="uid://dv2wxka46gmv7" path="res://flippable_object.tscn" id="2_42boc"]
+
+[node name="HouseCore" type="Node2D"]
+script = ExtResource("1_rhbrw")
+
+[node name="House" parent="." instance=ExtResource("2_42boc")]
+
+[node name="Vase" parent="House" instance=ExtResource("2_42boc")]
+position = Vector2(-130, 16)
+
+[node name="Chair" parent="House" instance=ExtResource("2_42boc")]
+position = Vector2(140, -57)
