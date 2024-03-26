@@ -6,9 +6,6 @@
 [node name="FlippableObject" type="Node2D" groups=["flip_object"]]
 script = ExtResource("1_wfxro")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_5p1yd")
-
 [node name="FlipButton" type="TextureButton" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -22,5 +19,6 @@ offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(0.5, 0.5)
+texture_normal = ExtResource("2_5p1yd")
 
 [connection signal="pressed" from="FlipButton" to="." method="_on_flip_button_pressed"]
