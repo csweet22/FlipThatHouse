@@ -8,6 +8,10 @@ var your_house: Node2D
 
 var finish_timer: Timer
 
+var solve_timer: Timer
+
+var solve_duration: float = 30.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	init_new_puzzle()
@@ -20,6 +24,15 @@ func _ready():
 	finish_timer.timeout.connect(finish_timer_finished)
 	
 	add_child(finish_timer)
+	
+	solve_timer = Timer.new()
+	solve_timer.autostart = true
+	solve_timer.one_shot = true
+	solve_timer.wait_time = solve_duration
+	
+	solve_timer.timeout.connect(solve_timer_finished)
+	
+	add_child(solve_timer)
 
 func init_new_puzzle():
 	if reference_house != null:
@@ -44,12 +57,24 @@ func init_new_puzzle():
 func finish_timer_finished():
 	init_new_puzzle()
 
+func solve_timer_finished():
+	game_over()
+
+func game_over():
+	print("GAME OVER!")
+	your_house.set_as_reference()
+
+func solved_puzzle():
+	finish_timer.start()
+	solve_timer.wait_time *= 0.8
+	solve_timer.start()
+	your_house.set_as_reference()
+
 func item_flipped():
 	var reference_flips: Array[int] = reference_house.get_flip_array()
 	var your_flips: Array[int] = your_house.get_flip_array()
 	
 	if your_flips == reference_flips:
-		finish_timer.start()
-		your_house.set_as_reference()
+		solved_puzzle()
 	else:
 		pass
