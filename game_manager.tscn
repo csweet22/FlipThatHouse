@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://stpj0sgpny4k"]
+[gd_scene load_steps=5 format=3 uid="uid://stpj0sgpny4k"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_wgh6b"]
+[ext_resource type="AudioStream" uid="uid://rpo0lguypb7i" path="res://pickupCoin.wav" id="2_ohtcp"]
+[ext_resource type="AudioStream" uid="uid://w2h46yso5n8t" path="res://jump.wav" id="3_ijv3u"]
+[ext_resource type="AudioStream" uid="uid://c3nefgjdsuqcl" path="res://explosion.wav" id="4_cxiui"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_wgh6b")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ohtcp")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ijv3u")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_cxiui")

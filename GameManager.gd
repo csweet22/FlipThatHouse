@@ -74,17 +74,20 @@ func game_over():
 	game_over_scene = gameover_scene.instantiate()
 	get_tree().root.add_child(game_over_scene)
 	your_house.set_as_reference()
+	$AudioStreamPlayer3.play()
 
 func solved_puzzle():
 	puzzles_solved += 1
 	finish_timer.start()
 	solve_timer.paused = true
 	your_house.set_as_reference()
+	$AudioStreamPlayer.play()
 
 func item_flipped():
 	var reference_flips: Array[int] = reference_house.get_flip_array()
 	var your_flips: Array[int] = your_house.get_flip_array()
 	
+	$AudioStreamPlayer2.play()
 	if your_flips == reference_flips:
 		solved_puzzle()
 	else:
