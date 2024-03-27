@@ -2,6 +2,7 @@ extends Node
 
 
 var house_scene = preload("res://house.tscn")
+var gameover_scene = preload("res://game_over_screen.tscn")
 
 var reference_house: Node2D
 var your_house: Node2D
@@ -10,7 +11,11 @@ var finish_timer: Timer
 
 var solve_timer: Timer
 
-var solve_duration: float = 30.0
+var solve_duration: float = 5.0
+
+var game_over_scene: Node
+
+var puzzles_solved: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,17 +47,22 @@ func init_new_puzzle():
 		your_house.destroy()
 	
 	reference_house = house_scene.instantiate() as Node2D
-	reference_house.global_position = Vector2(10000, 0)
+	reference_house.global_position = Vector2(10000, 360)
 	add_child(reference_house)
-	reference_house._setup(250)
+	reference_house._setup(864)
 	
 	your_house = house_scene.instantiate() as Node2D
-	your_house.global_position = Vector2(10000, 0)
+	your_house.global_position = Vector2(10000, 360)
 	add_child(your_house)
-	your_house._setup(-250)
+	your_house._setup(288)
 	
 	reference_house.set_as_reference()
 	reference_house.randomize_flips()
+	
+	if solve_timer != null:
+		solve_timer.paused = false
+		solve_timer.wait_time *= 0.8
+		solve_timer.start()
 
 func finish_timer_finished():
 	init_new_puzzle()
@@ -61,13 +71,14 @@ func solve_timer_finished():
 	game_over()
 
 func game_over():
-	print("GAME OVER!")
+	game_over_scene = gameover_scene.instantiate()
+	get_tree().root.add_child(game_over_scene)
 	your_house.set_as_reference()
 
 func solved_puzzle():
+	puzzles_solved += 1
 	finish_timer.start()
-	solve_timer.wait_time *= 0.8
-	solve_timer.start()
+	solve_timer.paused = true
 	your_house.set_as_reference()
 
 func item_flipped():
@@ -78,3 +89,10 @@ func item_flipped():
 		solved_puzzle()
 	else:
 		pass
+
+func restart():
+	game_over_scene.queue_free()
+	solve_timer.wait_time = solve_duration
+	solve_timer.start()
+	init_new_puzzle()
+	puzzles_solved = 0

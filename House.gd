@@ -7,7 +7,7 @@ func _setup(x_pos: float):
 	var tween_in = get_tree().create_tween()
 	tween_in.set_ease(Tween.EASE_OUT)
 	tween_in.set_trans(Tween.TRANS_QUAD)
-	tween_in.tween_property(self, "position", Vector2(x_pos, 0), 0.25)
+	tween_in.tween_property(self, "position", Vector2(x_pos, 360), 0.25)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -53,7 +53,7 @@ func destroy():
 	var tween_in = get_tree().create_tween()
 	tween_in.set_ease(Tween.EASE_IN)
 	tween_in.set_trans(Tween.TRANS_QUAD)
-	tween_in.tween_property(self, "position", Vector2(x_pos, 0), 0.25)
+	tween_in.tween_property(self, "position", Vector2(x_pos, 360), 0.25)
 	tween_in.finished.connect(queue_free)
 
 func get_all_children(node) -> Array:
