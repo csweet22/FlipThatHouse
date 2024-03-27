@@ -8,9 +8,15 @@ var Pivot: Node2D
 
 var target_rotation: float = 0
 
+var bitmask: Image
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Pivot = $"."
+	var test = BitMap.new()
+	test.create_from_image_alpha(($FlipButton as TextureButton).texture_normal.get_image())
+	($FlipButton as TextureButton).texture_click_mask = test
+
 
 func _on_flip_button_pressed():
 	flip()

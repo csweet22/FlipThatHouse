@@ -1,15 +1,82 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnbvf0raqgsnr"]
+[gd_scene load_steps=7 format=3 uid="uid://dnbvf0raqgsnr"]
 
 [ext_resource type="Script" path="res://House.gd" id="1_rhbrw"]
 [ext_resource type="PackedScene" uid="uid://dv2wxka46gmv7" path="res://flippable_object.tscn" id="2_42boc"]
+[ext_resource type="Texture2D" uid="uid://cu60nuw70860g" path="res://house.png" id="3_24wsq"]
+[ext_resource type="Texture2D" uid="uid://cxwracxkhp6bo" path="res://vase.png" id="4_lv5x2"]
+[ext_resource type="Texture2D" uid="uid://dccica5ryt314" path="res://table.png" id="5_cc8vb"]
+[ext_resource type="Texture2D" uid="uid://db2whlossymks" path="res://chair.png" id="6_1i6m1"]
 
 [node name="HouseCore" type="Node2D"]
 script = ExtResource("1_rhbrw")
 
 [node name="House" parent="." instance=ExtResource("2_42boc")]
 
-[node name="Vase" parent="House" instance=ExtResource("2_42boc")]
-position = Vector2(-130, 16)
+[node name="FlipButton" parent="House" index="0"]
+texture_filter = 1
+texture_repeat = 1
+offset_left = -278.0
+offset_top = -301.0
+offset_right = -86.0
+offset_bottom = -93.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("3_24wsq")
+stretch_mode = 0
 
-[node name="Chair" parent="House" instance=ExtResource("2_42boc")]
-position = Vector2(140, -57)
+[node name="Vase" parent="House" instance=ExtResource("2_42boc")]
+position = Vector2(-63, 62)
+
+[node name="FlipButton" parent="House/Vase" index="0"]
+texture_filter = 1
+offset_left = -46.0
+offset_top = -50.0
+offset_right = -14.0
+offset_bottom = -18.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("4_lv5x2")
+stretch_mode = 0
+
+[node name="Table" parent="House" instance=ExtResource("2_42boc")]
+position = Vector2(82, 85)
+
+[node name="FlipButton" parent="House/Table" index="0"]
+texture_filter = 1
+offset_left = -47.0
+offset_top = -64.0
+offset_right = -15.0
+offset_bottom = -32.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("5_cc8vb")
+stretch_mode = 0
+
+[node name="Table2" parent="House" instance=ExtResource("2_42boc")]
+position = Vector2(82, 202)
+
+[node name="FlipButton" parent="House/Table2" index="0"]
+texture_filter = 1
+offset_left = -47.0
+offset_top = -49.0
+offset_right = -15.0
+offset_bottom = -17.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("6_1i6m1")
+stretch_mode = 0
+
+[node name="Table3" parent="House" instance=ExtResource("2_42boc")]
+position = Vector2(-62, 202)
+
+[node name="FlipButton" parent="House/Table3" index="0"]
+texture_filter = 1
+offset_left = -47.0
+offset_top = -49.0
+offset_right = -15.0
+offset_bottom = -17.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("6_1i6m1")
+stretch_mode = 0
+
+[editable path="House"]
+[editable path="House/Vase"]
+[editable path="House/Table"]
+[editable path="House/Table2"]
+[editable path="House/Table3"]

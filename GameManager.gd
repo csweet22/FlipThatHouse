@@ -11,7 +11,7 @@ var finish_timer: Timer
 
 var solve_timer: Timer
 
-var solve_duration: float = 5.0
+var solve_duration: float = 30.0
 
 var game_over_scene: Node
 

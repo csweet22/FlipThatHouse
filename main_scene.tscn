@@ -1,7 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://klmrh2p3jndk"]
+[gd_scene load_steps=7 format=3 uid="uid://klmrh2p3jndk"]
 
 [ext_resource type="Script" path="res://SolveTimerBar.gd" id="1_5ejg6"]
 [ext_resource type="Script" path="res://PuzzlesUI.gd" id="2_boasq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fnbai"]
+bg_color = Color(0, 0.407843, 0.203922, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6s45"]
+bg_color = Color(0.439216, 0.972549, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="SystemFont" id="SystemFont_d48fb"]
 font_names = PackedStringArray("Bauhaus 93")
@@ -35,6 +49,8 @@ offset_top = 53.805
 offset_right = 326.0
 offset_bottom = 80.805
 grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_fnbai")
+theme_override_styles/fill = SubResource("StyleBoxFlat_j6s45")
 show_percentage = false
 script = ExtResource("1_5ejg6")
 metadata/_edit_use_anchors_ = true
